@@ -40,3 +40,61 @@ window.addEventListener("keydown", grow);
 // to at minimum add listeners to each link and toggle the display of the tab contents.
 // Hint: display: none; hides an element, and display: block; will bring it
 
+let links = [];
+
+links.push(
+  document.getElementById("tab1Link"),
+  document.getElementById("tab2Link"),
+  document.getElementById("tab3Link")
+);
+
+let tabs = [];
+
+tabs.push(
+  document.getElementById("tab1"),
+  document.getElementById("tab2"),
+  document.getElementById("tab3")
+);
+
+const showTab1 = event => {
+  event.preventDefault();
+  if (event.button == 0) {
+    tabs[0].style.display = "block";
+    tabs[1].style.display = "none";
+    tabs[2].style.display = "none";
+  }
+};
+
+const showTab2 = event => {
+  event.preventDefault();
+  if (event.button == 0) {
+    tabs[0].style.display = "none";
+    tabs[1].style.display = "block";
+    tabs[2].style.display = "none";
+  }
+};
+
+const showTab3 = event => {
+  event.preventDefault();
+  if (event.button == 0) {
+    tabs[0].style.display = "none";
+    tabs[1].style.display = "none";
+    tabs[2].style.display = "block";
+  }
+};
+
+const defaultTabState = () => {
+  tabs[0].style.display = "block";
+  tabs[1].style.display = "none";
+  tabs[2].style.display = "none";
+};
+
+defaultTabState();
+
+links[0].addEventListener("mousedown", showTab1);
+links[1].addEventListener("mousedown", showTab2);
+links[2].addEventListener("mousedown", showTab3);
+
+links.forEach(element =>
+  element.addEventListener("click", event => event.preventDefault())
+);
