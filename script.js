@@ -28,6 +28,11 @@ const grow = event => {
     currentSize *= 0.9;
     balloon.style.fontSize = currentSize + "%";
   }
+  if (currentSize >= 500) {
+    event.preventDefault();
+    balloon.textContent = "💥";
+    window.removeEventListener("keydown", grow);
+  }
 };
 
 window.addEventListener("keydown", grow);
